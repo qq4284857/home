@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC   
+    "-//mybatis.org//DTD Mapper 3.0//EN"  
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.home.work.manage.dao.MangageDao">
+
+	
+	<select id="searchByUser" resultMap="users">
+	select id,username,flag from home_user;
+	</select>
+	
+	<insert id="addByInsert">
+	insert into home_menu(id,name,url,sturts,flag,time,er_menu)values(#{id},#{name},#{url},#{mark},1,#{time},#{er_menu});
+	</insert>
+	
+	<insert id="insertByMU">
+	insert into home_user_menu(id,user_id,menu_id,power,sturts,flag)values(#{id},#{userid},#{menuid},#{power},#{sturts},#{flag});
+	</insert>
+	
+	<select id="searchUser" resultMap="users">
+	select id,username,flag from home_user where id=#{userid};
+	</select>
+	
+	
+	
+	<resultMap type="com.home.work.user.entity.Home_user" id="users">
+		<id property="id" column="id" />
+		<result property="username" column="username" />
+		<result property="password" column="password" />
+		<result property="sex" column="sex" />
+		<result property="age" column="age" />
+		<result property="phone" column="phone" />
+		<result property="time" column="time" />
+		<result property="flag" column="flag" />
+	</resultMap>
+		
+
+</mapper> 
+    

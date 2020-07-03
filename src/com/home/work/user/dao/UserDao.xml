@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC   
+    "-//mybatis.org//DTD Mapper 3.0//EN"  
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.home.work.user.dao.UserDao">
+
+	<insert id="setRegister">
+	insert into home_user(username,password,sex,age,phone,time,flag)values(#{username},#{password},#{sex},#{age},#{phone},#{time},1);
+	</insert>
+	
+	<select id="getLogin" resultMap="users">
+	select h.id,h.username,h.password,h.flag from home_user as h where h.username=#{username};
+	</select>
+	
+	<resultMap type="com.home.work.user.entity.Home_user" id="users">
+		<id property="id" column="id" />
+		<result property="username" column="username" />
+		<result property="password" column="password" />
+		<result property="sex" column="sex" />
+		<result property="age" column="age" />
+		<result property="phone" column="phone" />
+		<result property="time" column="time" />
+		<result property="flag" column="flag" />
+	</resultMap>
+		
+
+</mapper> 
+    
